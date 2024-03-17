@@ -18,7 +18,6 @@ const url = process.env.URI;
 
 const connectionParams = {
   useNewUrlParser: true,
-
   useUnifiedTopology: true,
 };
 mongoose

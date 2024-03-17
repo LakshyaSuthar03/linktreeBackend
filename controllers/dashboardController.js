@@ -5,7 +5,6 @@ export async function dashboardController(req, res) {
     const userJwt = req.body.userJwt;
     if (userJwt) {
       const userEmail = jwt.decode(userJwt).email;
-      console.log(userEmail);
       const user = await userModel.findOne({ email: userEmail });
       const userDetails = {
         name: user.name,
@@ -13,6 +12,7 @@ export async function dashboardController(req, res) {
         linksLength: user.link.length,
         links: user.link,
         handle: user.handle,
+        user: user,
       };
 
       return res.json({

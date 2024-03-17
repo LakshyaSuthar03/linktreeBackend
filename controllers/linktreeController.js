@@ -9,7 +9,7 @@ export async function linktreeController(req, res) {
     if (user.email != userEmail) {
       await userModels.updateOne(
         { _id: user._id },
-        { $inc: { linkTreeViews: 1 } }
+        { $inc: { linkTreeViews: 0.5 } }
       );
     }
 

@@ -15,7 +15,7 @@ export async function analyticsController(req, res) {
           message: "user data fetched!",
           dashboardData: [
             { title: "TotalLinks", stat: totalLinks },
-            { title: "LinkTree Views", stat: views },
+            { title: "LinkBasket Views", stat: views },
           ],
         });
       })
