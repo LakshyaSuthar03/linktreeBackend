@@ -64,3 +64,36 @@ export async function changeThemes(req, res) {
     });
   }
 }
+export async function addTheme(req, res) {
+  try {
+    const userJwt = req.body.userJwtToken;
+    const newPallet = req.body.newPallet;
+    if (userJwt) {
+      const userEmail = jwt.decode(userJwt).email;
+      const userDetails = await userModel.findOne({ email: userEmail });
+
+      if (!userDetails) {
+        return res.json({
+          message: "invalid authentication",
+          status: "error",
+        });
+      }
+
+      await userModel
+        .findByIdAndUpdate(userDetails._id, {
+          $push: { themes: newPallet },
+        })
+        .then((response) => {
+          console.log(response);
+        })
+        .catch((error) => {
+          console.error(error);
+        });
+    }
+  } catch (error) {
+    return res.json({
+      message: error.message,
+      status: "error",
+    });
+  }
+}
