@@ -19,16 +19,16 @@ export async function analyticsController(req, res) {
           ],
         });
       })
-      .catch((err) => {
+      .catch((error) => {
         res.json({
           status: "error",
-          message: err.message,
+          message: error.message,
         });
       });
   } catch (error) {
     res.json({
       status: "error",
-      message: err.message,
+      message: error.message,
     });
   }
 }

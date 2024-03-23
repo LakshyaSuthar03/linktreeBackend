@@ -26,6 +26,23 @@ const userSchema = mongoose.Schema({
     },
   ],
   linkTreeViews: { type: Number, default: 0 },
+  themes: [
+    {
+      id: { type: Number },
+      name: { type: String, default: "default" },
+      colors: { type: Array, default: ["1d1d1d", "1d1d1d", "cccccc"] },
+    },
+    {
+      id: { type: Number },
+      name: { type: String, default: "theme1" },
+      colors: { type: Array, default: ["2c3e50", "1d1f0f", "1abc9c"] },
+    },
+  ],
+  currentTheme: {
+    id: { type: Number },
+    name: { type: String, default: "default" },
+    colors: { type: Array, default: ["1d1d1d", "1d1d1d", "cccccc"] },
+  },
 });
 const user = new mongoose.model("user", userSchema);
 export default user;

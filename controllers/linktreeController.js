@@ -22,6 +22,8 @@ export async function linktreeController(req, res) {
         link: user.link,
         social: user.social,
         linkTreeViews: user.linkTreeViews,
+        themes: user.themes,
+        currentTheme: user.currentTheme,
       };
       res.json({ message: "userFound", status: "success", userData });
     } else {

@@ -45,6 +45,23 @@ export async function register(req, res) {
               handle: handle,
               link: [defaultLink],
               social: [defaultSocialLinks],
+              themes: [
+                {
+                  id: 1,
+                  name: "default",
+                  colors: ["#1d1d1d", "#1d1d1d", "#cccccc"],
+                },
+                {
+                  id: 2,
+                  name: "theme1",
+                  colors: ["#2c3e50", "#f0f0f0", "#1abc9c"],
+                },
+              ],
+              currentTheme: {
+                id: 1,
+                name: "default",
+                colors: ["#1d1d1d", "#1d1d1d", "#cccccc"],
+              },
             });
             const token = jwt.sign({ email: email }, "SECRET_KEY");
             return res.json({
