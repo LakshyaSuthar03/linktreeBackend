@@ -97,3 +97,36 @@ export async function addTheme(req, res) {
     });
   }
 }
+export async function deleteTheme(req, res) {
+  try {
+    const userJwt = req.body.userJwtToken;
+    const id = req.body.id;
+    if (userJwt) {
+      const userEmail = jwt.decode(userJwt).email;
+      const userDetails = await userModel.findOne({ email: userEmail });
+
+      if (!userDetails) {
+        return res.json({
+          message: "invalid authentication",
+          status: "error",
+        });
+      }
+
+      await userModel
+        .updateOne({ _id: userDetails._id }, { $pull: { themes: { _id: id } } })
+        .then((response) => {
+          if (response.acknowledged == true) {
+            return res.json({
+              message: "Theme deleted",
+              status: "success",
+            });
+          }
+        });
+    }
+  } catch (error) {
+    return res.json({
+      message: error.message,
+      status: "error",
+    });
+  }
+}
