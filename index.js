@@ -13,11 +13,11 @@ import bodyParser from "body-parser";
 dotenv.config();
 const app = express();
 const port = process.env.PORT || 3001;
-const corsOptions = {
-  origin:"http://localhost:5173",
-  credentials: true
-};
-app.use(cors(corsOptions));
+app.use(cors({
+  origin: 'http://localhost:5173',
+  
+}));
+
 app.use(bodyParser.urlencoded({ extended: true }));
 app.use(express.json());
 app.use("/auth", authRoute);
