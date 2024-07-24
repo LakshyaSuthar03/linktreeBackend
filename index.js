@@ -14,10 +14,7 @@ dotenv.config();
 const app = express();
 const port = process.env.PORT || 3001;
 
-app.use(cors({
-  origin: '*',
-  
-}));
+
 app.use(cors());
 
 app.use(bodyParser.urlencoded({ extended: true }));
@@ -28,9 +25,9 @@ app.use("/get", linktreeRoute);
 app.use("/edit", editRoute);
 app.use("/analytics", analyticsRoute);
 app.use("/themes", themesRoute);
-// app.get("/", (req, res) => {
-//   res.send("Welcome to Linktree API");
-// });
+app.get("/", (req, res) => {
+  res.send("Welcome to Linktree API");
+});
 
 app.listen(port, (req, res) => {
   console.log(`server started on ${port}`);
