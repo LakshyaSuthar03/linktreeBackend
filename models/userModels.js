@@ -6,7 +6,8 @@ const userSchema = mongoose.Schema({
   email: { type: String, require: true, unique: true },
   avatar: {
     type: String,
-    default: "https://cdn-icons-png.flaticon.com/512/4140/4140046.png",
+    default:
+      "https://img.freepik.com/free-psd/3d-illustration-human-avatar-profile_23-2150671142.jpg?w=1060&t=st=1721884525~exp=1721885125~hmac=b18818077ad7e084480adfa553fa6bed615336c642d51d93c86b841c9bc2524a",
   },
   password: { type: String, require: true },
   link: [
